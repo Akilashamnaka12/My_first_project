@@ -44,6 +44,8 @@ def take_order():
     if order_list:
         total_bill = calculate_total(order_list)
         
+        total_bill = apply_discount(total_bill)
+        
         print("\n------ BILL ------")
         for item in order_list:
             print(f"{item.title()} - Rs.{menu[item]}")
@@ -53,6 +55,13 @@ def take_order():
         print("------------------")
     else:
         print("No items ordered.")
+
+
+def apply_discount(total):
+    if total > 3000:
+        print("Congratulations! You got 10% discount.")
+        return total * 0.9
+    return total
 
 
 # Run the system
